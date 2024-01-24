@@ -1,0 +1,13 @@
+{
+    "ingredients": {
+      "Chicken Broiler/Fryer Breast Meat": 1,
+      "Butter": 1,
+      "Avocado": 1
+    },
+    "recipes": [
+      {
+        "name": "Simple Chicken and Avocado",
+        "method": "Cook chicken breast in a pan with butter. Serve with sliced avocado on the side."
+      }
+    ]
+}
