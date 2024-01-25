@@ -3,62 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <title>Your App Name</title>
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ775/resC6GJCaXy+0t9/0Dqvge+FNpD4l3" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     
 
 </head>
 <body>
 
-    <div>
-        <h2>Food</h2>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                Food
+                <div class="scrollable-container">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered ">
+                            <tbody>
+                                <tr scope="row">
+                                    <td>2</td>                            
+                                    <td>Chicken breast</td>
+                                    <td>delete</td>
+                                </tr scope="row">
+                                <tr>
+                                    <td>2</td>                            
+                                    <td>Chicken breast</td>
+                                    <td>delete</td>
+                                </tr>
+                                <tr scope="row">
+                                    <td>2</td>                            
+                                    <td>Chicken breast</td>
+                                    <td>delete</td>
+                                </tr>
+                                <tr scope="row">
+                                    <td>2</td>                            
+                                    <td>Chicken breast</td>
+                                    <td>delete</td>
+                                </tr>
+                                <tr scope="row">
+                                    <td>2</td>                            
+                                    <td>Chicken breast</td>
+                                    <td>delete</td>
+                                </tr>
+                                <tr scope="row">
+                                    <td>2</td>                            
+                                    <td>Chicken breast</td>
+                                    <td>delete</td>
+                                </tr>
+                                <tr scope="row">
+                                    <td>2</td>                            
+                                    <td>Chicken breast</td>
+                                    <td>delete</td>
+                                </tr>
+                                <tr scope="row">
+                                    <td>2</td>                            
+                                    <td>Chicken breast</td>
+                                    <td>delete</td>
+                                </tr>
+                                <tr scope="row">
+                                    <td>2</td>                            
+                                    <td>Chicken breast</td>
+                                    <td>delete</td>
+                                </tr>
+                                <!-- space for inserting rows -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                Recipies
+                <div class="scrollable-container">
+                    <div class = "table-responsive">
+                        <table class="table table-striped table-bordered">
+                                <tbody id="table-body">
+                                    <tr scope="row">
+                                        <td>3</td>
+                                        <td>French chicken with sauce</td>
+                                    </tr>
+                                    <tr scope="row">
+                                        <td>3</td>
+                                        <td>French chicken with sauce</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>French chicken with sauce</td>
+                                    </tr>
+                                    <tr scope="row">
+                                        <td>3</td>
+                                        <td>French chicken with sauce</td>
+                                    </tr>
+                                    <tr scope="row">
+                                        <td>3</td>
+                                        <td>French chicken with sauce</td>
+                                    </tr>
 
-        <table id="food-table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Quantity</th>
-                    <th>Remove</th>
-                    <th>Info</th>
-                </tr>
-            </thead>
-            <tbody>
+                                    
+                                    <!-- space for inserting rows -->                        
+                                </tbody>
 
-            </tbody>
-        </table>
-        <button id="add-food">Add Food</button>
-        <button id="hide-info" style="display: none;">Hide Info</button>
-        <div id="food-info-container" style="display: none;"></div>
-
-
-
-
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div>
-        <h2>Recipes</h2>
 
-        <table id="recipe-table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                </tr>
-            </thead>
-            <tbody>
+    <div class="container">   
+            <div class="row">
+                <div class="col-lg-2">
+                    Add food
+                </div>
+                <div class="col-lg-2">
+                    Create food
+                </div>
+                <div class="col-lg-3">
+                    Add recipe
+                </div>
+                <div class="col-lg-3">
+                    Create recipe
+                </div>
+            </div>
 
-            </tbody>
-        </table>
-        <button id="button5">Button5</button>
-        <button id="button6">Button6</button>
-        <button id="button7">Button7</button>
+            
     </div>
+   
     
-    <script src="index.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
 
 
  

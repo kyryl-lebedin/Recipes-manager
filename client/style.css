@@ -1,0 +1,18 @@
+body {
+  background-image: 
+  linear-gradient(to right, rgb(169, 238, 169), rgb(75, 188, 126) 33.3%, darkgreen);
+}
+
+.scrollable-container {
+  height: 66.6vh; 
+  overflow-y: auto;
+  border-radius: 8px; 
+  background-color: #ffffe0;
+}
+
+.table-responsive {
+  
+  width: 100%; 
+  table-layout: fixed; 
+}
+
