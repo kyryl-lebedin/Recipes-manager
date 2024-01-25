@@ -1,6 +1,7 @@
 body {
   background-image: 
-  linear-gradient(to right, rgb(169, 238, 169), rgb(75, 188, 126) 33.3%, darkgreen);
+  linear-gradient(to right, rgb(169, 238, 169), rgb(47, 192, 112) 33.3%,  rgb(0, 130, 0) 90%, rgb(0, 62, 28));
+  overflow-x: hidden;
 }
 
 .scrollable-container {
@@ -13,6 +14,33 @@ body {
 .table-responsive {
   
   width: 100%; 
-  table-layout: fixed; 
+  table-layout: fixed;
+}
+
+.heading {
+  text-align: center;
+  color: rgb(5, 53, 0);
+  font-size: 80px; 
+  white-space: nowrap;
+  text-shadow:
+      -0.5px -0.5px 0 #fff,  
+       0.5px -0.5px 0 #fff,
+      -0.5px  0.5px 0 #fff,
+       0.5px  0.5px 0 #fff
+}
+
+
+
+.table tr td {
+  color: rgb(5, 53, 0);
+  font-size: 25px;
+  text-align: center;
+}
+
+
+.bot-button {
+  text-align: center;
+  font-size: 40px;
+
 }
 
