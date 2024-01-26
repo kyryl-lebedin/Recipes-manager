@@ -7,8 +7,9 @@ body {
 .scrollable-container {
   height: 66.6vh; 
   overflow-y: auto;
-  border-radius: 8px; 
+  border-radius: 15px; 
   background-color: #ffffe0;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .table-responsive {
@@ -44,3 +45,11 @@ body {
 
 }
 
+.btn-custom-outline {
+  border: none;
+  outline: none;
+}
+.btn-custom-outline:hover, .btn-custom-outline:focus {
+  border: none;
+  outline: none;
+}
