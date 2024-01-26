@@ -195,3 +195,96 @@ function addNewData(data) {
       }
       foodForm.classList.add('was-validated');
   }, false);
+
+
+
+
+
+function iterateOverTable(){
+    let rows = document.querySelectorAll('.food-table tbody tr');
+    for (row of rows) {
+        console.log(row.cells[1]);
+    }
+};
+
+
+
+//foodName is a string
+function addFood(foodName) {
+    let rows = document.querySelectorAll('.food-table tbody tr');
+    
+    // Check if the food is already in the table
+    for (let row of rows) {
+        if (row.cells[1].textContent === foodName) {
+            let quantity = parseInt(row.cells[0].textContent);
+            row.cells[0].textContent = quantity + 1;
+            return;
+        }
+    }
+
+    //append elements to table
+    let tableBody = document.querySelector(".food-table tbody");
+    let newRow = document.createElement("tr");
+
+    let firstColumn = document.createElement("td");
+    firstColumn.textContent = "1";
+    newRow.appendChild(firstColumn);
+
+    let secondColumn = document.createElement("td");
+    secondColumn.textContent = foodName;
+    newRow.appendChild(secondColumn);
+
+    let thirdColumn = document.createElement("td");
+    let button = document.createElement("button");
+    button.type = "button";
+    button.className = "btn btn-outline-success delete-food";
+    button.innerHTML = '&times;';  
+    
+    thirdColumn.appendChild(button);
+    newRow.appendChild(thirdColumn);
+
+    tableBody.appendChild(newRow);
+}
+
+
+
+// delete food from table with use of button
+document.addEventListener('DOMContentLoaded', () => {
+    
+    let deleteButtons = document.querySelectorAll('.delete-food');
+
+    
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          
+            let row = this.closest('tr');
+            let quantity = parseInt(row.cells[0].textContent);
+
+            if (quantity>1) {
+                row.cells[0].textContent = quantity - 1; 
+            }
+            else{
+                row.remove();
+            }
+            
+        });
+    });
+});
+
+
+document.getElementById('add-food').addEventListener('click', () => {
+    //get food options select and add to the table, with search and scrollable
+
+
+})
+
+function getFoodNames() {
+    fetch('/getFoodNames')
+        .then(response => response.json())
+        .then(foodNames => {
+            console.log(foodNames); 
+            
+        })
+        .catch(error => console.error('Error fetching food names:', error));
+}
+

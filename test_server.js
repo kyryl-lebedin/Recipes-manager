@@ -14,7 +14,7 @@ app.post('/api/addData', (req, res) => {
     
     const newData = req.body;
 
-    fs.readFile('testdb.json', 'utf8', (err, data) => {
+    fs.readFile('serverdb.json', 'utf8', (err, data) => {
         //check if json is readable
         if (err) {
             console.error(err);
@@ -33,7 +33,7 @@ app.post('/api/addData', (req, res) => {
 
 
         //write updated data back
-        fs.writeFile('testdb.json', JSON.stringify(db, null, 2), (err) => {
+        fs.writeFile('serverdb.json', JSON.stringify(db, null, 2), (err) => {
             // check if json is writable
             if (err) {
                 console.error(err);
@@ -44,6 +44,26 @@ app.post('/api/addData', (req, res) => {
         });
 
 
+    });
+});
+
+
+
+app.get('/getFoodNames', (req, res) => {
+    fs.readFile('serverdb.json', 'utf8', (err, data) => {
+        //check if json is readable
+        if (err) {
+            console.error(err);
+            return res.status(500).send('Error reading the database file.');
+        }
+
+        try {
+            const jsonData = JSON.parse(data);
+            const foodNames = jsonData.map(item => item["Food (100g)"]);
+            res.json(foodNames);
+        } catch (err) {
+            res.status(500).send('Error parsing the database file. Invalid JSON.');
+        }
     });
 });
 

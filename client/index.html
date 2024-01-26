@@ -21,68 +21,19 @@
                 </div>
                 <div class="scrollable-container">
                     <div class="table-responsive">
-                        <table class="table table-bordered ">
+                        <table class="table table-bordered food-table">
                             <tbody>
                                 <tr scope="row">
                                     <td>2</td>                            
                                     <td>Chicken breast</td>
-                                    <td><button type="button" class="btn btn-outline-success">&times;</button></td>
+                                    <td><button type="button" class="btn btn-outline-success delete-food">&times;</button></td>
                                 </tr>
                                 <tr scope="row">
                                     <td>2</td>                            
                                     <td>Chicken breast</td>
-                                    <td><button type="button" class="btn btn-outline-success">&times;</button></td>
+                                    <td><button type="button" class="btn btn-outline-success delete-food">&times;</button></td>
                                 </tr>
-                                <tr scope="row">
-                                    <td>2</td>                            
-                                    <td>Chicken breast</td>
-                                    <td><button type="button" class="btn btn-outline-success">&times;</button></td>
-                                </tr>
-                                <tr scope="row">
-                                    <td>2</td>                            
-                                    <td>Chicken breast</td>
-                                    <td><button type="button" class="btn btn-outline-success">&times;</button></td>
-                                </tr>
-                                <tr scope="row">
-                                    <td>2</td>                            
-                                    <td>Chicken breast</td>
-                                    <td><button type="button" class="btn btn-outline-success">&times;</button></td>
-                                </tr>
-                                <tr scope="row">
-                                    <td>2</td>                            
-                                    <td>Chicken breast</td>
-                                    <td><button type="button" class="btn btn-outline-success">&times;</button></td>
-                                </tr>
-                                <tr scope="row">
-                                    <td>2</td>                            
-                                    <td>Chicken breast</td>
-                                    <td><button type="button" class="btn btn-outline-success">&times;</button></td>
-                                </tr>
-                                <tr scope="row">
-                                    <td>2</td>                            
-                                    <td>Chicken breast</td>
-                                    <td><button type="button" class="btn btn-outline-success">&times;</button></td>
-                                </tr>
-                                <tr scope="row">
-                                    <td>2</td>                            
-                                    <td>Chicken breast</td>
-                                    <td><button type="button" class="btn btn-outline-success">&times;</button></td>
-                                </tr>
-                                <tr scope="row">
-                                    <td>2</td>                            
-                                    <td>Chicken breast</td>
-                                    <td><button type="button" class="btn btn-outline-success">&times;</button></td>
-                                </tr>
-                                <tr scope="row">
-                                    <td>2</td>                            
-                                    <td>Chicken breast</td>
-                                    <td><button type="button" class="btn btn-outline-success">&times;</button></td>
-                                </tr>
-                                <tr scope="row">
-                                    <td>2</td>                            
-                                    <td>Chicken breast</td>
-                                    <td><button type="button" class="btn btn-outline-success">&times;</button></td>
-                                </tr>
+                                
                                 <!-- space for inserting rows -->
                             </tbody>
                         </table>
@@ -90,7 +41,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-6 bot-button">
-                        <button type="button" class="btn btn-success">Add Food</button>
+                        <button type="button" class="btn btn-success" id="add-food" data-bs-toggle="modal" data-bs-target="#foodListModal">Add Food</button>
                     </div>
                     <div class="col-lg-6 bot-button">
                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#foodModal">Create Food</button>
@@ -401,9 +352,40 @@
         </div>
         </div>
     </div>
+
+
+
+    <!--list of food modal-->
+    <div class="modal fade" id="foodListModal" tabindex="-1" aria-labelledby="foodListModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="foodModalLabel">Add New Food Data</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <!-- Form inside modal -->
+            <form id="foodForm" novalidate>
+                
+                <div class="mb-3">
+                <label for="foodName" class="form-label">Food (100g)</label>
+                <input type="text" class="form-control" id="foodName" required>
+                </div>
+                
+                
+    
+              
+            </form>
+            
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" form="foodForm">Submit</button>
+              </div>
+        </div>
+        </div>
+    </div>
     
   
-   
     
 
 
