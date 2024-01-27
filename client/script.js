@@ -372,3 +372,62 @@ document.getElementById('foodListForm').addEventListener('submit', function (eve
 
 
 
+document.addEventListener('DOMContentLoaded', () => {
+    let tableBody = document.querySelector('.food-table tbody');
+
+    tableBody.addEventListener('click', function(event) {
+        
+        if (event.target.closest('.delete-food')) {  
+            event.stopPropagation();
+            return;
+        }
+
+        
+        let row = event.target.closest('tr');
+        if (row) {
+            let foodName = row.cells[1].textContent; 
+            showFoodInfo(foodName).then(foodInfo => {
+                const modalBody = document.getElementById('modalBody');
+                modalBody.innerHTML = ''; // Clear previous content
+        
+                Object.keys(foodInfo).forEach(key => {
+                    const p = document.createElement('p');
+                    p.textContent = `${key}: ${foodInfo[key]}`;
+                    modalBody.appendChild(p);
+                });
+
+               
+                const myModal = new bootstrap.Modal(document.getElementById('foodInfoModal'));
+                myModal.show();
+            }).catch(error => {
+                console.error('Error fetching food info:', error);
+               
+            });
+        }
+    });
+});
+
+function showFoodInfo(foodName) {
+    return fetch('/get-food-details', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ foodName: foodName })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+
+        console.log(data);
+        return data;
+    })
+    .catch(error => {
+        console.error('There has been a problem with fetch operation:', error);
+    });
+}
+

@@ -45,19 +45,19 @@ body {
 }
 
 #add-food {
-  border: 2px solid white; /* Adds a white border around the button */
+  border: 2px solid white;
 }
 
 #create-food {
-  border: 2px solid white; /* Adds a white border around the button */
+  border: 2px solid white;
 }
 
 #add-recipe {
-  border: 2px solid white; /* Adds a white border around the button */
+  border: 2px solid white;
 }
 
 #create-recipe {
-  border: 2px solid white; /* Adds a white border around the button */
+  border: 2px solid white;
 }
 
 
@@ -72,4 +72,9 @@ body {
 
 #foodListForm .form-check .form-control {
   width: 60px;
+}
+
+.food-table tr:hover {
+  background-color: #f2f2f2; 
+  cursor: pointer; 
 }
