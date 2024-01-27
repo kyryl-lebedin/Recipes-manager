@@ -252,23 +252,20 @@ function addFood(foodName) {
 // delete food from table with use of button
 document.addEventListener('DOMContentLoaded', () => {
     
-    let deleteButtons = document.querySelectorAll('.delete-food');
+    let tableBody = document.querySelector('.food-table tbody');
 
-    
-    deleteButtons.forEach(button => {
-        button.addEventListener('click', function() {
-          
-            let row = this.closest('tr');
+    tableBody.addEventListener('click', function(event) {
+        if (event.target && event.target.classList.contains('delete-food')) {
+            let button = event.target;
+            let row = button.closest('tr');
             let quantity = parseInt(row.cells[0].textContent);
 
-            if (quantity>1) {
-                row.cells[0].textContent = quantity - 1; 
-            }
-            else{
+            if (quantity > 1) {
+                row.cells[0].textContent = quantity - 1;
+            } else {
                 row.remove();
             }
-            
-        });
+        }
     });
 });
 
