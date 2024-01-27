@@ -42,8 +42,24 @@ body {
 .bot-button {
   text-align: center;
   font-size: 40px;
-
 }
+
+#add-food {
+  border: 2px solid white; /* Adds a white border around the button */
+}
+
+#create-food {
+  border: 2px solid white; /* Adds a white border around the button */
+}
+
+#add-recipe {
+  border: 2px solid white; /* Adds a white border around the button */
+}
+
+#create-recipe {
+  border: 2px solid white; /* Adds a white border around the button */
+}
+
 
 .btn-custom-outline {
   border: none;
@@ -52,4 +68,8 @@ body {
 .btn-custom-outline:hover, .btn-custom-outline:focus {
   border: none;
   outline: none;
+}
+
+#foodListForm .form-check .form-control {
+  width: 60px;
 }
