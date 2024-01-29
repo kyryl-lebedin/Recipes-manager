@@ -18,7 +18,7 @@ function addNewData(data) {
 
 
 
-
+// adding food to db
 
 document.addEventListener("DOMContentLoaded", function(){
     document.getElementById('foodForm').addEventListener('submit', function (event) {
@@ -430,4 +430,187 @@ function showFoodInfo(foodName) {
         console.error('There has been a problem with fetch operation:', error);
     });
 }
+
+
+
+
+// adding new recipe to db 
+
+function addNewRecipe(data) {
+    
+    fetch('http://localhost:3000/api/addRecipe', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+    // server response message
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+  }
+  
+  
+
+  document.addEventListener("DOMContentLoaded", function(){
+    var recipeForm = document.getElementById('recipeForm');
+    var foodRecipeListForm = document.getElementById('foodRecipeListForm');
+    var addRecipeModal = document.getElementById('addRecipeModal');
+
+    addRecipeModal.addEventListener('show.bs.modal', function () {
+        recipeForm.reset();
+        foodRecipeListForm.reset();
+        recipeForm.classList.remove('was-validated');
+    });
+
+    recipeForm.addEventListener('submit', function (event) {
+        if (!recipeForm.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+        } else {
+            event.preventDefault(); // Prevent form submission
+
+            let obj = {};
+            var recipeNameInputValue = document.getElementById('recipeName').value;
+            var recipeNameLabel = document.querySelector('label[for="recipeName"]').textContent;
+            obj[recipeNameLabel] = recipeNameInputValue;
+
+            var durationInputValue = document.getElementById('duration').value;
+            var durationLabel = document.querySelector('label[for="duration"]').textContent;
+            obj[durationLabel] = durationInputValue;
+
+            var recipeDescriptionValue = document.getElementById('recipeDescription').value;
+            var recipeDescriptionLabel = document.querySelector('label[for="recipeDescription"]').textContent;
+            obj[recipeDescriptionLabel] = recipeDescriptionValue;
+
+            // Get checked items from the checkboxes
+            obj["Ingredients"] = getCheckedItems();
+
+            addNewRecipe(obj);
+            bootstrap.Modal.getInstance(addRecipeModal).hide();
+        }
+        recipeForm.classList.add('was-validated'); // This should be outside of the else block
+    }, false);
+});
+
+function getCheckedItems() {
+    let checkedItems = [];
+    const allCheckboxes = document.querySelectorAll('#foodRecipeListForm input[type="checkbox"]');
+
+    allCheckboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+            const foodName = checkbox.value;
+            const quantity = document.getElementById('num_' + foodName).value;
+            checkedItems.push({ name: foodName, quantity: quantity });
+        }
+    });
+
+    return checkedItems;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+  // adding checkbox to recipe food table
+  function addFoodRecipeCheckbox(foodName) {
+    const container = document.createElement('div');
+    container.className = 'form-check d-flex align-items-center';
+
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.className = 'form-check-input me-2';
+    checkbox.id = 'check_' + foodName;
+    checkbox.name = 'food';
+    checkbox.value = foodName;
+
+    const labelCheckbox = document.createElement('label');
+    labelCheckbox.className = 'form-check-label me-auto';
+    labelCheckbox.htmlFor = 'check_' + foodName;
+    labelCheckbox.textContent = foodName;
+
+    const numberInput = document.createElement('input');
+    numberInput.type = 'number';
+    numberInput.className = 'form-control';
+    numberInput.id = 'num_' + foodName;
+    numberInput.name = 'quantity';
+    numberInput.value = '1';
+    numberInput.min = '1';
+  
+
+    container.appendChild(checkbox);
+    container.appendChild(labelCheckbox);
+    container.appendChild(numberInput);
+
+    
+    document.getElementById('foodRecipeListForm').appendChild(container);
+    
+};
+
+
+
+document.getElementById('create-recipe').addEventListener('click', () => {
+    getFoodNames().then(namesList => { 
+        if (namesList) { 
+            namesList.forEach(foodName => {
+                addFoodRecipeCheckbox(foodName);
+            });
+        }
+    });
+});
+
+
+document.getElementById('create-recipe').addEventListener('click', () => {
+    getFoodNames().then(namesList => {
+        if (namesList) {
+            const form = document.getElementById('foodRecipeListForm');
+            form.innerHTML = '';
+            namesList.forEach(foodName => {
+                console.log(foodName);
+                addFoodRecipeCheckbox(foodName);
+            });
+        }
+    });
+});
+
+
+document.getElementById('foodRecipeListModal').addEventListener('hide.bs.modal', function () {
+    document.getElementById('foodRecipeListForm').reset();
+});
+
+document.getElementById('foodListForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+    
+    document.querySelectorAll('#foodListForm input[name="food"]:checked').forEach(checkbox => {
+        const foodName = checkbox.value;
+        const quantity = parseInt(document.getElementById('num_' + foodName).value, 10);
+        if (!isNaN(quantity)) {
+            for (let i = quantity; i > 0; i--) {
+                addFood(foodName);
+            }
+        }
+    });
+
+    
+    bootstrap.Modal.getInstance(document.getElementById('foodListModal')).hide();
+}); 
+
+
 

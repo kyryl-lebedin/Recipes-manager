@@ -92,6 +92,44 @@ app.post('/get-food-details', (req, res) => {
 });
 
 
+app.post('/api/addRecipe', (req, res) => {
+    
+    const newData = req.body;
+
+    fs.readFile('recipesdb.json', 'utf8', (err, data) => {
+        //check if json is readable
+        if (err) {
+            console.error(err);
+            return res.status(500).send('Error reading the database file.');
+        }
+
+        //convert json data into obj and update it with new data
+        try {
+            db = JSON.parse(data);
+        } catch (parseErr) {
+            console.error(parseErr);
+            
+            return res.status(500).json({ message: 'Error parsing the database file. Invalid JSON.' });
+        }
+        db.push(newData);
+
+
+        //write updated data back
+        fs.writeFile('recipesdb.json', JSON.stringify(db, null, 2), (err) => {
+            
+            if (err) {
+                console.error(err);
+                return res.status(500).send('Error writing to the database file.');
+            }
+            
+            res.status(200).json({ message: 'Data added successfully' });
+        });
+
+
+    });
+});
+
+
 app.listen(PORT, () => {
     console.log(`http://localhost:${PORT}`);
 });

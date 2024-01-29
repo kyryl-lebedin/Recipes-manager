@@ -10,7 +10,24 @@ body {
   border-radius: 15px; 
   background-color: #ffffe0;
   background: rgba(255, 255, 255, 0.5);
+  
 }
+
+#scroll {
+  height: 200px; 
+  overflow-y: auto;
+  border-radius: 7px; 
+  background-color: #ffffe0;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgb(216, 216, 216);
+}
+
+#foodRecipeListForm {
+  margin: 5px;
+  margin-left: 15px;
+}
+
+
 
 .table-responsive {
   
@@ -71,6 +88,11 @@ body {
 }
 
 #foodListForm .form-check .form-control {
+  width: 60px;
+}
+
+
+#foodRecipeListForm .form-check .form-control {
   width: 60px;
 }
 
