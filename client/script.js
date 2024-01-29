@@ -1,3 +1,4 @@
+// function that manages adding food to db
 function addNewData(data) {
   fetch('http://localhost:3000/api/addData', {
       method: 'POST',
@@ -18,7 +19,7 @@ function addNewData(data) {
 
 
 
-// adding food to db
+// event listener for submitting newly created food in modal to db 
 
 document.addEventListener("DOMContentLoaded", function(){
     document.getElementById('foodForm').addEventListener('submit', function (event) {
@@ -207,8 +208,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
 
-
-
+//function that manages adding particular food entity to the table (with quantity check) bookmark 1
 
 //foodName is a string
 function addFood(foodName) {
@@ -249,7 +249,9 @@ function addFood(foodName) {
 
 
 
-// delete food from table with use of button
+
+
+// event listener that realizes deletion from food table with button 
 document.addEventListener('DOMContentLoaded', () => {
     
     let tableBody = document.querySelector('.food-table tbody');
@@ -265,12 +267,17 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 row.remove();
             }
+            updateRecipes();
         }
     });
+
+   
 });
 
 
 
+
+// function for retrieving food names from database
 
 function getFoodNames() {
     return fetch('/getFoodNames') 
@@ -286,7 +293,7 @@ function getFoodNames() {
 
 
 
-// modal with food names
+// function that adds checkboxes with food when add food button pressed
 
 // input is string
 function addFoodCheckbox(foodName) {
@@ -325,6 +332,9 @@ function addFoodCheckbox(foodName) {
 
 
 
+// event listener that create checkbox form when pressed add food
+// need to be combined with one below cause the functionality looks same
+
 document.getElementById('add-food').addEventListener('click', () => {
     getFoodNames().then(namesList => { 
         if (namesList) { 
@@ -334,7 +344,6 @@ document.getElementById('add-food').addEventListener('click', () => {
         }
     });
 });
-
 
 document.getElementById('add-food').addEventListener('click', () => {
     getFoodNames().then(namesList => {
@@ -348,11 +357,14 @@ document.getElementById('add-food').addEventListener('click', () => {
     });
 });
 
-
+//event listener for hiding add food modal when submitted
 document.getElementById('foodListModal').addEventListener('hide.bs.modal', function () {
     document.getElementById('foodListForm').reset();
 });
 
+
+
+//function for adding desired, checked in modal food to the table
 document.getElementById('foodListForm').addEventListener('submit', function (event) {
     event.preventDefault();
     
@@ -363,6 +375,7 @@ document.getElementById('foodListForm').addEventListener('submit', function (eve
             for (let i = quantity; i > 0; i--) {
                 addFood(foodName);
             }
+            updateRecipes();   //udating recipes each time new food is added
         }
     });
 
@@ -372,6 +385,93 @@ document.getElementById('foodListForm').addEventListener('submit', function (eve
 
 
 
+
+// function that fetches recipes that are applicable to table and adds them to table
+function updateRecipes() {
+    //1. Collect food table data 
+    var table = document.querySelector('.food-table tbody');
+    var data = {};
+    
+    table.querySelectorAll('tr').forEach(function(row) {
+        var cells = row.querySelectorAll('td');
+        let food = cells[1].innerText;
+        let number = parseInt(cells[0].innerText, 10);
+        data[food] = number;
+    });
+
+    //2. Get available recipes asynchronously and update the table
+    getAvailableRecipes(data).then(recipes => {
+        if (recipes) {
+            addRecipesToTable(recipes);
+        } else {
+            console.error('No recipes received');
+        }
+    }).catch(error => {
+        console.error('Error in getting recipes:', error);
+    });
+}
+
+
+// function for sending table data and recieving the array with available recipes
+
+// input is object output is array
+function getAvailableRecipes(tableData) {
+    return fetch('/api/getAvailableRecipes', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(tableData)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(recipes => {
+
+        console.log(recipes);
+
+        //turn into array
+        return recipes;
+    })
+    .catch(error => {
+        console.error('There has been a problem with fetch operation:', error);
+    });
+}
+
+
+
+function addRecipesToTable(recipes) {
+    
+    var tableBody = document.getElementById('table-body');
+
+    
+    tableBody.innerHTML = '';
+
+    
+    recipes.forEach(function(recipe) {
+        
+        var row = document.createElement('tr');
+        var cell = document.createElement('td');
+
+        
+        cell.textContent = recipe;
+
+        
+        row.appendChild(cell);
+
+        
+        tableBody.appendChild(row);
+    });
+}
+
+
+
+
+
+// event listener that pops up information about food when it is clicked in the table
 document.addEventListener('DOMContentLoaded', () => {
     let tableBody = document.querySelector('.food-table tbody');
 
@@ -407,6 +507,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
+// function for retrieving food info by sending name
+
 function showFoodInfo(foodName) {
     return fetch('/get-food-details', {
         method: 'POST',
@@ -434,8 +537,9 @@ function showFoodInfo(foodName) {
 
 
 
-// adding new recipe to db 
+// function for adding new recipe to db 
 
+// input is object
 function addNewRecipe(data) {
     
     fetch('http://localhost:3000/api/addRecipe', {
@@ -457,6 +561,8 @@ function addNewRecipe(data) {
   
   
 
+
+  // event listener that handles creating new recipie wit modal and forms
   document.addEventListener("DOMContentLoaded", function(){
     var recipeForm = document.getElementById('recipeForm');
     var foodRecipeListForm = document.getElementById('foodRecipeListForm');
@@ -498,6 +604,8 @@ function addNewRecipe(data) {
     }, false);
 });
 
+
+// function that gathers checked items from recipeCreate form in modal
 function getCheckedItems() {
     let checkedItems = [];
     const allCheckboxes = document.querySelectorAll('#foodRecipeListForm input[type="checkbox"]');
@@ -514,22 +622,7 @@ function getCheckedItems() {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-  // adding checkbox to recipe food table
+  // function that adds checkboxes into create recipe modal form 
   function addFoodRecipeCheckbox(foodName) {
     const container = document.createElement('div');
     container.className = 'form-check d-flex align-items-center';
@@ -565,7 +658,7 @@ function getCheckedItems() {
 };
 
 
-
+// event listeners for udating create recipe forms and modal, might need to be combined
 document.getElementById('create-recipe').addEventListener('click', () => {
     getFoodNames().then(namesList => { 
         if (namesList) { 
@@ -595,6 +688,10 @@ document.getElementById('foodRecipeListModal').addEventListener('hide.bs.modal',
     document.getElementById('foodRecipeListForm').reset();
 });
 
+
+
+
+// event listeners that handles number of items checked in the form (i can't remember how)
 document.getElementById('foodListForm').addEventListener('submit', function (event) {
     event.preventDefault();
     
@@ -610,7 +707,10 @@ document.getElementById('foodListForm').addEventListener('submit', function (eve
 
     
     bootstrap.Modal.getInstance(document.getElementById('foodListModal')).hide();
-}); 
+});
+
+
+
 
 
 

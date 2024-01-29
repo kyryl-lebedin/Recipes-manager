@@ -92,6 +92,44 @@ app.post('/get-food-details', (req, res) => {
 });
 
 
+app.post('/api/getAvailableRecipes', (req, res) => {
+    const food = req.body;
+
+    fs.readFile('recipesdb.json', 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send('Error reading the database file.');
+        }
+
+        try {
+            const recipes = JSON.parse(data); 
+            let possibleRecipes = [];
+
+            recipes.forEach(recipe => {
+                let canMake = true;
+
+                recipe.Ingredients.forEach(ingredient => {
+                    if (!food[ingredient.name] || food[ingredient.name] < parseInt(ingredient.quantity)) {
+                        canMake = false;
+                    }
+                });
+
+                if (canMake) {
+                    possibleRecipes.push(recipe["Recipe Name"]);
+                }
+            });
+
+            res.json(possibleRecipes);
+
+        } catch (err) {
+            console.error(err);
+            res.status(500).send('Error parsing the database file. Invalid JSON.');
+        }
+    });
+});
+
+
+
 app.post('/api/addRecipe', (req, res) => {
     
     const newData = req.body;
