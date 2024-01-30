@@ -37,14 +37,16 @@ body {
 
 .heading {
   text-align: center;
-  color: rgb(5, 53, 0);
+  color: rgb(8, 77, 0);
   font-size: 80px; 
   white-space: nowrap;
+  font-weight: 700;
+  
   text-shadow:
-      -0.5px -0.5px 0 #fff,  
-       0.5px -0.5px 0 #fff,
-      -0.5px  0.5px 0 #fff,
-       0.5px  0.5px 0 #fff
+      -0.5px -0.5px 0 #a7ff95,  
+       0.5px -0.5px 0 #a7ff95,
+      -0.5px  0.5px 0 #a7ff95,
+       0.5px  0.5px 0 #a7ff95
 }
 
 
@@ -69,7 +71,7 @@ body {
   border: 2px solid white;
 }
 
-#add-recipe {
+#recipe-journal {
   border: 2px solid white;
 }
 
@@ -99,4 +101,42 @@ body {
 .food-table tr:hover {
   background-color: #f2f2f2; 
   cursor: pointer; 
+}
+
+.recipe-table tr:hover {
+  background-color: #f2f2f2; 
+  cursor: pointer; 
+}
+
+#create-recipe, #add-food, #create-food, #recipe-journal {
+  color: #a7ff95;
+  border: 1px solid #a7ff95;
+  background-color: rgb(40, 128, 30);
+  border-radius: 10px;
+  margin-top: 25px;
+  padding: 1em;
+  font-size: calc(0.35vw + 0.35em);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  white-space: nowrap;
+  font-weight: 700;
+  overflow: hidden; 
+  text-overflow: ellipsis;
+}
+
+@media only screen and (max-width: 600px) {
+  #create-recipe, #add-food, #create-food, #recipe-journal {
+    padding: 0.5em;
+    font-size: calc(1vw + 0.5em);
+  }
+}
+
+
+
+
+#b1, #b2, #b3, #b4, #b5, #b6 {
+  color: #ffffff;
+  border: 0px;
+  background-color: rgb(40, 128, 30);
 }

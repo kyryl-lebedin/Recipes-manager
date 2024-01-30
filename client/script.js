@@ -553,6 +553,7 @@ function addNewRecipe(data) {
     .then(response => response.json())
     .then(data => {
         console.log('Success:', data);
+        updateRecipes();
     })
     .catch((error) => {
         console.error('Error:', error);
@@ -602,7 +603,7 @@ function addNewRecipe(data) {
             bootstrap.Modal.getInstance(addRecipeModal).hide();
         }
         recipeForm.classList.add('was-validated'); // This should be outside of the else block
-        updateRecipes();
+        
     }, false);
 });
 
@@ -687,9 +688,7 @@ document.getElementById('create-recipe').addEventListener('click', () => {
 });
 
 
-document.getElementById('foodRecipeListModal').addEventListener('hide.bs.modal', function () {
-    document.getElementById('foodRecipeListForm').reset();
-});
+
 
 
 
@@ -717,3 +716,155 @@ document.getElementById('foodListForm').addEventListener('submit', function (eve
 
 
 
+// event listener that pops up information about recipe when it is clicked in the table
+
+document.addEventListener('DOMContentLoaded', () => {
+    let tableBody = document.querySelector('.recipe-table tbody');
+
+    tableBody.addEventListener('click', function(event) {
+        
+        
+        let row = event.target.closest('tr');
+        if (row) {
+            let recipeName = row.cells[0].textContent; 
+            console.log(recipeName);
+            
+            showRecipeInfo(recipeName).then(recipeInfo => {
+                const modalBody = document.getElementById('recipeInfoModalBody');
+                modalBody.innerHTML = ''; 
+        
+                Object.keys(recipeInfo).forEach(key => {
+                    const p = document.createElement('p');
+                    // Check if the property is an object
+                    if (typeof recipeInfo[key] === 'object' && recipeInfo[key] !== null) {
+                        
+                        if (Array.isArray(recipeInfo[key])) {
+                            
+                            let content = `${key}: <ul>`;
+                            
+                            recipeInfo[key].forEach(item => {
+                                
+                                let itemDetails = Object.keys(item).map(property => `${property}: ${item[property]}`).join(', ');
+                                content += `<li>${itemDetails}</li>`;
+                            });
+                            content += '</ul>';
+                            p.innerHTML = content; 
+                        } else {
+                            
+                            let objectDetails = Object.keys(recipeInfo[key]).map(property => `${property}: ${recipeInfo[key][property]}`).join(', ');
+                            p.textContent = `${key}: ${objectDetails}`;
+                        }
+                    } else {
+                        
+                        p.textContent = `${key}: ${recipeInfo[key]}`;
+                    }
+                    modalBody.appendChild(p);
+                });
+                
+               
+                const myModal = new bootstrap.Modal(document.getElementById('recipeInfoModal'));
+                myModal.show();
+            }).catch(error => {
+                console.error('Error fetching food info:', error);
+               
+            });
+            
+        }
+    });
+});
+
+
+// function for retrieving recipe info by sending name
+
+function showRecipeInfo(recipeName) {
+    return fetch('/api/getRecipeDetails', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ recipeName: recipeName })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+
+        console.log(data);
+        return data;
+    })
+    .catch(error => {
+        console.error('There has been a problem with fetch operation:', error);
+    });
+}
+
+
+
+
+
+
+
+// recipe journal button that adds all the recipes to table and back
+
+document.addEventListener('DOMContentLoaded', () => {
+    let count = 0;
+
+    document.getElementById('recipe-journal').addEventListener('click', function(event) {
+        count++;
+
+        if (!(count % 2 === 0)) {
+            document.getElementById('recipe-journal').style.backgroundColor = 'rgb(186, 192, 35)';
+            document.getElementById('recipe-journal').style.color = 'black';
+            document.getElementById('add-food').style.display = 'none';
+            document.getElementById('create-food').style.display = 'none';
+            document.getElementById('create-recipe').style.display = 'none';
+            document.querySelectorAll('.delete-food').forEach(button => button.style.display = 'none');
+            // recieve recipes and add to table
+            getAllRecipes().then(allRecipes => {
+                if (allRecipes) {
+                    
+                    addRecipesToTable(allRecipes);
+                }
+                
+            });
+            
+            
+        } else {
+            document.getElementById('recipe-journal').style.backgroundColor = 'rgb(40, 128, 30)';
+            document.getElementById('recipe-journal').style.color = '#a7ff95';
+            document.getElementById('add-food').style.display = '';
+            document.getElementById('create-food').style.display = '';
+            document.getElementById('create-recipe').style.display = '';
+            document.querySelectorAll('.delete-food').forEach(button => button.style.display = '');
+
+
+            updateRecipes();
+           
+        }
+    });
+});
+
+function getAllRecipes() {
+    return fetch('/api/getAllRecipes')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .catch(error => console.error('Error fetching recipie names:', error));
+}
+
+
+
+document.getElementById('add-food').addEventListener('click', () => {
+    getFoodNames().then(namesList => { 
+        if (namesList) { 
+            namesList.forEach(foodName => {
+                addFoodCheckbox(foodName);
+            });
+        }
+    });
+});

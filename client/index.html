@@ -48,7 +48,7 @@
                         <table class="table table-bordered recipe-table">
                                 <tbody id="table-body">
                                     <!--
-                                    <tr scope="row">
+                                    <tr>
                                         <td>French chicken with sauce</td>
                                     </tr>
                                     -->
@@ -61,7 +61,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-6 bot-button">
-                        <button type="button" class="btn btn-success" id="add-recipe">Recipe Journal</button>
+                        <button type="button" class="btn btn-success" id="recipe-journal">Recipe Journal</button>
                     </div>
                     <div class="col-lg-6 bot-button">
                         <button type="button" class="btn btn-success" id="create-recipe" data-bs-toggle="modal" data-bs-target="#addRecipeModal">Create Recipe</button>
@@ -317,7 +317,7 @@
             
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" form="foodForm">Submit</button>
+                <button type="submit" class="btn btn-primary" id="b6" form="foodForm">Submit</button>
               </div>
         </div>
         </div>
@@ -346,7 +346,7 @@
             
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" form="foodListForm">Submit</button>
+                <button type="submit" class="btn btn-primary" id="b5" form="foodListForm">Submit</button>
               </div>
         </div>
         </div>
@@ -361,16 +361,16 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="modalLabel">Information</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"  aria-label="Close"></button>
             </div>
-            <div class="modal-body" id="modalBody">
+            <div class="modal-body" id="modalBody" >
               
 
 
 
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" id="b3"  data-bs-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
@@ -421,9 +421,30 @@
             
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" form="recipeForm">Submit</button>
+                <button type="submit" class="btn btn-primary" id="b2" form="recipeForm">Submit</button>
               </div>
         </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="recipeInfoModal" tabindex="-1" aria-labelledby="recipeInfoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="recipeInfoModalLabel">Information</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="recipeInfoModalBody">
+              
+
+
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="b1">Close</button>
+            </div>
+          </div>
         </div>
     </div>
 

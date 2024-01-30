@@ -1,46 +1,94 @@
 [
   {
-    "Recipe Name": "werw",
-    "Duration (min)": "324",
-    "Recipe Description": "dsfsdf",
+    "Recipe Name": "Chicken with sauce",
+    "Duration (min)": "15",
+    "Recipe Description": "cook bloody chicken",
     "Ingredients": [
       {
         "name": "Chicken Broiler/Fryer Breast Meat",
-        "quantity": "3"
-      },
-      {
-        "name": "Fish Salmon Atlantic Farmed",
         "quantity": "2"
       }
     ]
   },
   {
-    "Recipe Name": "werewr",
-    "Duration (min)": "3242",
-    "Recipe Description": "324fsdf",
+    "Recipe Name": "sandwich",
+    "Duration (min)": "234",
+    "Recipe Description": "234234",
     "Ingredients": [
       {
-        "name": "Chicken Broiler/Fryer Breast Meat",
-        "quantity": "1"
+        "name": "Butter",
+        "quantity": 1
       }
     ]
   },
   {
-    "Recipe Name": "testost",
-    "Duration (min)": "234",
-    "Recipe Description": "2344ewfsdfadfaxcagre",
+    "Recipe Name": "ur booty",
+    "Duration (min)": "44",
+    "Recipe Description": "put in the oven",
+    "Ingredients": [
+      {
+        "name": "Spinach",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "Recipe Name": "test appear",
+    "Duration (min)": "423",
+    "Recipe Description": "fsg",
     "Ingredients": [
       {
         "name": "Chicken Broiler/Fryer Breast Meat",
-        "quantity": "4"
-      },
-      {
-        "name": "Fish Salmon Atlantic Farmed",
-        "quantity": "1"
+        "quantity": 1
       },
       {
         "name": "Butter",
-        "quantity": "1"
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "Recipe Name": "fds",
+    "Duration (min)": "fasdf",
+    "Recipe Description": "adsf",
+    "Ingredients": [
+      {
+        "name": "Chicken Broiler/Fryer Breast Meat",
+        "quantity": 1
+      },
+      {
+        "name": "Butter",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "Recipe Name": "carrot almond soup",
+    "Duration (min)": "55",
+    "Recipe Description": "fadsf",
+    "Ingredients": [
+      {
+        "name": "Carrot",
+        "quantity": 1
+      },
+      {
+        "name": "Almond",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "Recipe Name": "ragu",
+    "Duration (min)": "234",
+    "Recipe Description": "324",
+    "Ingredients": [
+      {
+        "name": "Almond",
+        "quantity": 2
+      },
+      {
+        "name": "Walnut",
+        "quantity": 1
       }
     ]
   }
