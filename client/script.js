@@ -562,7 +562,7 @@ function addNewRecipe(data) {
   
 
 
-  // event listener that handles creating new recipie wit modal and forms
+  // event listener that handles creating new recipie with modal and forms
   document.addEventListener("DOMContentLoaded", function(){
     var recipeForm = document.getElementById('recipeForm');
     var foodRecipeListForm = document.getElementById('foodRecipeListForm');
@@ -613,11 +613,12 @@ function getCheckedItems() {
     allCheckboxes.forEach(checkbox => {
         if (checkbox.checked) {
             const foodName = checkbox.value;
-            const quantity = document.getElementById('num_' + foodName).value;
-            checkedItems.push({ name: foodName, quantity: quantity });
+            const quantity = document.getElementById('num' + foodName).value;
+            console.log(foodName, quantity);
+            checkedItems.push({ name: foodName, quantity: parseInt(quantity) });
         }
     });
-
+    console.log(checkedItems)
     return checkedItems;
 }
 
@@ -642,7 +643,7 @@ function getCheckedItems() {
     const numberInput = document.createElement('input');
     numberInput.type = 'number';
     numberInput.className = 'form-control';
-    numberInput.id = 'num_' + foodName;
+    numberInput.id = 'num' + foodName;
     numberInput.name = 'quantity';
     numberInput.value = '1';
     numberInput.min = '1';
