@@ -598,9 +598,11 @@ function addNewRecipe(data) {
             obj["Ingredients"] = getCheckedItems();
 
             addNewRecipe(obj);
+            
             bootstrap.Modal.getInstance(addRecipeModal).hide();
         }
         recipeForm.classList.add('was-validated'); // This should be outside of the else block
+        updateRecipes();
     }, false);
 });
 
