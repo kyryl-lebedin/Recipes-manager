@@ -1,94 +1,120 @@
 [
   {
-    "Recipe Name": "Chicken with sauce",
-    "Duration (min)": "15",
-    "Recipe Description": "cook bloody chicken",
+    "Recipe Name": "Chicken pie",
+    "Duration (min)": "50",
+    "Recipe Description": "Cook it\nmake it tasty\nserve with sour cream",
     "Ingredients": [
       {
         "name": "Chicken Broiler/Fryer Breast Meat",
-        "quantity": "2"
-      }
-    ]
-  },
-  {
-    "Recipe Name": "sandwich",
-    "Duration (min)": "234",
-    "Recipe Description": "234234",
-    "Ingredients": [
-      {
-        "name": "Butter",
         "quantity": 1
-      }
-    ]
-  },
-  {
-    "Recipe Name": "ur booty",
-    "Duration (min)": "44",
-    "Recipe Description": "put in the oven",
-    "Ingredients": [
+      },
+      {
+        "name": "Milk Cow",
+        "quantity": 1
+      },
       {
         "name": "Spinach",
         "quantity": 1
+      },
+      {
+        "name": "Potato (with skin)",
+        "quantity": 1
       }
     ]
   },
   {
-    "Recipe Name": "test appear",
-    "Duration (min)": "423",
-    "Recipe Description": "fsg",
+    "Recipe Name": "Chicken and Fish Salad",
+    "Duration (min)": "30",
+    "Recipe Description": "Mix chicken and fish with vegetables\nAdd dressing\nServe chilled",
     "Ingredients": [
       {
         "name": "Chicken Broiler/Fryer Breast Meat",
         "quantity": 1
       },
       {
-        "name": "Butter",
-        "quantity": 1
-      }
-    ]
-  },
-  {
-    "Recipe Name": "fds",
-    "Duration (min)": "fasdf",
-    "Recipe Description": "adsf",
-    "Ingredients": [
-      {
-        "name": "Chicken Broiler/Fryer Breast Meat",
+        "name": "Fish Salmon Atlantic Farmed",
         "quantity": 1
       },
       {
-        "name": "Butter",
+        "name": "Spinach",
         "quantity": 1
-      }
-    ]
-  },
-  {
-    "Recipe Name": "carrot almond soup",
-    "Duration (min)": "55",
-    "Recipe Description": "fadsf",
-    "Ingredients": [
+      },
       {
         "name": "Carrot",
         "quantity": 1
       },
       {
-        "name": "Almond",
+        "name": "Apple",
         "quantity": 1
       }
     ]
   },
   {
-    "Recipe Name": "ragu",
-    "Duration (min)": "234",
-    "Recipe Description": "324",
+    "Recipe Name": "Avocado Toast",
+    "Duration (min)": "10",
+    "Recipe Description": "Toast bread\nSpread avocado on top\nAdd salt and pepper",
     "Ingredients": [
       {
-        "name": "Almond",
+        "name": "Avocado",
+        "quantity": 1
+      },
+      {
+        "name": "Bread",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "Recipe Name": "Pasta Carbonara",
+    "Duration (min)": "25",
+    "Recipe Description": "Cook pasta\nFry bacon and garlic\nMix with eggs and cheese\nServe hot",
+    "Ingredients": [
+      {
+        "name": "Spaghetti",
+        "quantity": 1
+      },
+      {
+        "name": "Bacon",
+        "quantity": 4
+      },
+      {
+        "name": "Garlic",
         "quantity": 2
       },
       {
-        "name": "Walnut",
+        "name": "Egg Chicken",
+        "quantity": 2
+      },
+      {
+        "name": "Parmesan Cheese",
         "quantity": 1
+      }
+    ]
+  },
+  {
+    "Recipe Name": "Vegetable Stir-Fry",
+    "Duration (min)": "15",
+    "Recipe Description": "Heat oil in a pan\nAdd vegetables and stir-fry\nSeason with soy sauce\nServe with rice",
+    "Ingredients": [
+      {
+        "name": "Broccoli",
+        "quantity": 1
+      },
+      {
+        "name": "Carrot",
+        "quantity": 1
+      },
+      {
+        "name": "Bell Pepper",
+        "quantity": 1
+      },
+      {
+        "name": "Mushrooms",
+        "quantity": 1
+      },
+      {
+        "name": "Soy Sauce",
+        "quantity": 2
       }
     ]
   }
